@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- â”€â”€ Sidebar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>ðŸ“š Study Assistant</h1>
+                <span class="health-dot" id="healthDot" title="Checking...">â—</span>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <label class="upload-btn" for="fileInput">
+                    ðŸ“¤ Upload PDF
+                </label>
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+                <div class="upload-progress" id="uploadProgress" hidden>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">Processing...</span>
+                </div>
+            </div>
+
+            <!-- Document List -->
+            <div class="doc-section">
+                <h3>ðŸ“„ My Documents</h3>
+                <div class="doc-list" id="docList">
+                    <p class="empty-msg">No documents uploaded yet.</p>
+                </div>
+            </div>
+
+            <!-- Scope Selector -->
+            <div class="scope-section">
+                <h3>ðŸ” Search Scope</h3>
+                <select id="scopeSelect">
+                    <option value="">All Documents</option>
+                </select>
+            </div>
+
+            <!-- Answer Mode -->
+            <div class="mode-section">
+                <h3>ðŸ“ Answer Mode</h3>
+                <select id="modeSelect">
+                    <option value="simple" selected>Simple Explanation</option>
+                    <option value="exam">Exam Answer</option>
+                    <option value="short">Short Answer</option>
+                    <option value="detailed">Detailed Answer</option>
+                    <option value="points">Important Points</option>
+                </select>
+            </div>
+
+            <!-- Connection Mode -->
+            <div class="mode-section">
+                <h3>ðŸŒ Connection Mode</h3>
+                <select id="providerSelect">
+                    <option value="auto" selected>Auto (Ollama then Groq)</option>
+                    <option value="ollama">Local Ollama (qwen2.5-coder)</option>
+                    <option value="offline">100% Offline (No AI)</option>
+                    <option value="groq">Groq AI (Cloud)</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- â”€â”€ Main Chat Area â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+        <main class="main">
+            <div class="chat-container" id="chatContainer">
+                <!-- Welcome message -->
+                <div class="message assistant-msg">
+                    <div class="msg-content">
+                        <p>ðŸ‘‹ <strong>Welcome!</strong> I'm your AI Study Assistant.</p>
+                        <p>Upload a PDF document using the sidebar, then ask me questions about it. I'll answer <strong>only</strong> from your uploaded material â€” no hallucinations!</p>
+                        <p><em>Tip: You can select a specific document or search across all your uploads.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <textarea
+                        id="questionInput"
+                        placeholder="Ask a question about your documents..."
+                        rows="1"
+                    ></textarea>
+                    <button id="sendBtn" title="Send">
+                        âž¤
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
